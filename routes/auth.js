@@ -47,13 +47,13 @@ router.post("/login", async (req, res, next) => {
         // });
 
 
-        const establishmentsDirected = await Establishment.find({research_director_id: user._id});
-
-        await Promise.all(
-          teamsMemberships.map((teamsMembership) =>
-            Team.findOne({ _id: teamsMembership.team_id })
-          )
-        );
+        // const establishmentsDirected = await Establishment.find({research_director_id: user._id});
+        //
+        // await Promise.all(
+        //   teamsMemberships.map((teamsMembership) =>
+        //     Team.findOne({ _id: teamsMembership.team_id })
+        //   )
+        // );
 
         return res.json({
           // ...user._doc,
