@@ -48,3 +48,15 @@ app.get("/",(req,res)=> {
      res.send("API is running ");
     }
 )
+
+const { exec } = require('child_process');
+
+app.get('/migrate-database', (req,res) =>{
+    exec('node ./seeds/seed.js', (error, stdout, stderr) => {
+        if (error) {
+            res.send(`Error occurred during the execution of the seeds file.`);
+            return;
+        }
+        res.send(`migration is working`);
+    });
+})
