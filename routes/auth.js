@@ -55,15 +55,15 @@ router.post("/login", async (req, res, next) => {
         //   )
         // );
 
-        return res.json({
-          // ...user._doc,
-          // token,
-          // laboratoriesHeaded,
-          // teamsHeaded,
-          // teamsMemberships,
-          // establishmentsDirected
-            "success":"api for auth"
-        });
+        // return res.json({
+        //   // ...user._doc,
+        //   // token,
+        //   // laboratoriesHeaded,
+        //   // teamsHeaded,
+        //   // teamsMemberships,
+        //   // establishmentsDirected
+        // });
+        return res.send("api for auth")
       });
     } catch (error) {
       return next(error);
