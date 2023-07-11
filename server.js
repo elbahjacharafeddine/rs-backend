@@ -44,3 +44,7 @@ app.get("/test", (req, resp) => {
   const token = req.headers.authorization.split(" ")[1];
   resp.status(200).send(jwt.decode(token));
 });
+app.get("/",(req,res)=> {
+     res.send("API is running ");
+    }
+)
