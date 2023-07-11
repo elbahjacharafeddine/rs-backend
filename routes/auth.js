@@ -33,18 +33,18 @@ router.post("/login", async (req, res, next) => {
         const body = { _id: user._id, email: user.email, roles: user.roles };
         // const token = jwt.sign({ user: body }, config.JWT_SECRET);
 
-        const laboratoriesHeaded = await Laboratory.find({
-          head_id: user._id,
-        });
+        // const laboratoriesHeaded = await Laboratory.find({
+        //   head_id: user._id,
+        // });
+        //
+        // const teamsHeaded = await Team.find({
+        //   head_id: user._id,
+        // });
 
-        const teamsHeaded = await Team.find({
-          head_id: user._id,
-        });
-
-        const teamsMemberships = await TeamMemberShip.find({
-          user_id: user._id,
-          active: true,
-        });
+        // const teamsMemberships = await TeamMemberShip.find({
+        //   user_id: user._id,
+        //   active: true,
+        // });
 
 
         const establishmentsDirected = await Establishment.find({research_director_id: user._id});
@@ -56,7 +56,7 @@ router.post("/login", async (req, res, next) => {
         );
 
         return res.json({
-          ...user._doc,
+          // ...user._doc,
           // token,
           // laboratoriesHeaded,
           // teamsHeaded,
