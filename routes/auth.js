@@ -58,10 +58,11 @@ router.post("/login", async (req, res, next) => {
         return res.json({
           ...user._doc,
           // token,
-          laboratoriesHeaded,
-          teamsHeaded,
-          teamsMemberships,
-          establishmentsDirected
+          // laboratoriesHeaded,
+          // teamsHeaded,
+          // teamsMemberships,
+          // establishmentsDirected
+            "success":"api for auth"
         });
       });
     } catch (error) {
