@@ -24,10 +24,11 @@ router.post(
 
 router.post("/login", async (req, res, next) => {
   passport.authenticate("login", async (err, user, info) => {
-    // try {
-    //   if (err || !user) {
-    //     return next(info);
-    //   }
+    try {
+      if (err || !user) {
+        // return next(info);
+        return res.send("error condition if")
+      }
     //   req.login(user, { session: false }, async (error) => {
     //     if (error) return next(error);
     //     const body = { _id: user._id, email: user.email, roles: user.roles };
@@ -64,9 +65,10 @@ router.post("/login", async (req, res, next) => {
     //       establishmentsDirected
     //     });
     //   });
-    // } catch (error) {
-    //   return next(error);
-    // }
+    } catch (error) {
+      // return next(error);
+      return res.send("error catch")
+    }
     return res.send("api for auth")
   })(req, res, next);
 });
