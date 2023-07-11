@@ -38,39 +38,39 @@ router.post("/login", async (req, res, next) => {
           head_id: user._id,
         });
     //
-    //     const teamsHeaded = await Team.find({
-    //       head_id: user._id,
-    //     });
-    //
-    //     const teamsMemberships = await TeamMemberShip.find({
-    //       user_id: user._id,
-    //       active: true,
-    //     });
-    //
-    //
-    //     const establishmentsDirected = await Establishment.find({research_director_id: user._id});
-    //
-    //     await Promise.all(
-    //       teamsMemberships.map((teamsMembership) =>
-    //         Team.findOne({ _id: teamsMembership.team_id })
-    //       )
-    //     );
-    //
-    //     return res.json({
-    //       ...user._doc,
-    //       token,
-    //       laboratoriesHeaded,
-    //       teamsHeaded,
-    //       teamsMemberships,
-    //       establishmentsDirected
-    //     });
-        return res.send("in login method")
+        const teamsHeaded = await Team.find({
+          head_id: user._id,
+        });
+
+        const teamsMemberships = await TeamMemberShip.find({
+          user_id: user._id,
+          active: true,
+        });
+
+
+        const establishmentsDirected = await Establishment.find({research_director_id: user._id});
+
+        await Promise.all(
+          teamsMemberships.map((teamsMembership) =>
+            Team.findOne({ _id: teamsMembership.team_id })
+          )
+        );
+
+        return res.json({
+          ...user._doc,
+          token,
+          laboratoriesHeaded,
+          teamsHeaded,
+          teamsMemberships,
+          establishmentsDirected
+        });
+        //return res.send("in login method")
       });
     } catch (error) {
       // return next(error);
       return res.send("error catch")
     }
-    return res.send("api for auth")
+    //return res.send("api for auth")
   })(req, res, next);
 });
 
