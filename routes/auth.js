@@ -29,14 +29,14 @@ router.post("/login", async (req, res, next) => {
         // return next(info);
         return res.send("error condition if")
       }
-    //   req.login(user, { session: false }, async (error) => {
-    //     if (error) return next(error);
-    //     const body = { _id: user._id, email: user.email, roles: user.roles };
-    //     const token = jwt.sign({ user: body }, config.JWT_SECRET);
-    //
-    //     const laboratoriesHeaded = await Laboratory.find({
-    //       head_id: user._id,
-    //     });
+      req.login(user, { session: false }, async (error) => {
+        if (error) return next(error);
+        const body = { _id: user._id, email: user.email, roles: user.roles };
+        const token = jwt.sign({ user: body }, config.JWT_SECRET);
+
+        const laboratoriesHeaded = await Laboratory.find({
+          head_id: user._id,
+        });
     //
     //     const teamsHeaded = await Team.find({
     //       head_id: user._id,
@@ -64,7 +64,8 @@ router.post("/login", async (req, res, next) => {
     //       teamsMemberships,
     //       establishmentsDirected
     //     });
-    //   });
+        return res.send("in login method")
+      });
     } catch (error) {
       // return next(error);
       return res.send("error catch")
